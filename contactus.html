@@ -42,30 +42,44 @@
     </ul>
 
     <h3>Send a Message</h3>
-   <form id="contact-form">
+   <form id="contact-form" novalidate>
 
-        <label for="contact-name">Your Name</label><br />
-        <input type="text" id="contact-name" name="name" placeholder="e.g Liyema Sobikwa" required /><br /><br />
+       <label for="contact-name">Your Name</label><br />
+<input type="text" id="contact-name" name="name" placeholder="e.g Liyema Sobikwa" />
+<span class="error" id="name-error"></span>
+<br /><br />
 
-        <label for="contact-email">Email Address</label><br />
-        <input type="email" id="contact-email" name="email" placeholder="liyemasobikwa@gmail.com" required /><br /><br />
+<label for="contact-email">Email Address</label><br />
+<input type="email" id="contact-email" name="email" placeholder="liyemasobikwa@gmail.com" />
+<span class="error" id="email-error"></span>
+<br /><br />
 
-        <label for="contact-subject">Subject</label>
-        <select id="contact-subject" name="subject">
-            <option value="">Select a topic...</option>
-            <option>General Enquiry</option>
-            <option>Order Update</option>
-            <option>Custom Order Question</option>
-            <option>Returns &amp; Exchanges</option>
-            <option>Wholesale / Collaboration</option>
-            <option>Other</option>
-        </select><br /><br />
+<label for="contact-subject">Subject</label><br />
+<select id="contact-subject" name="subject">
+    <option value="">Select a topic...</option>
+    <option>General Enquiry</option>
+    <option>Order Update</option>
+    <option>Custom Order Question</option>
+    <option>Returns &amp; Exchanges</option>
+    <option>Wholesale / Collaboration</option>
+    <option>Other</option>
+</select>
+<span class="error" id="subject-error"></span>
+<br /><br />
 
-        <label for="contact-message">Your Message</label><br />
-        <textarea id="contact-message" name="message" rows="5" cols="40" placeholder="How can we help you today"></textarea>
-        
+<label for="contact-message">Your Message</label><br />
+<textarea
+    id="contact-message"
+    name="message"
+    rows="5"
+    cols="40"
+    placeholder="How can we help you today?"
+></textarea>
+<span class="error" id="message-error"></span>
+<br /><br />
 
-        <button type="submit">Send Message</button>
+<button type="submit">Send Message</button>
+
     </form>
     
     <div class="map-section">
@@ -130,6 +144,92 @@ document
             alert("Failed to send message. Please try again.");
         });
     });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "ObPiJedFA7wS59zRC",
+});
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(error => {
+        error.textContent = "";
+    });
+
+    document.querySelectorAll("input, select, textarea").forEach(field => {
+        field.classList.remove("input-error");
+    });
+
+    const name = document.getElementById("contact-name");
+    const email = document.getElementById("contact-email");
+    const subject = document.getElementById("contact-subject");
+    const message = document.getElementById("contact-message");
+
+    // Name validation
+    if (name.value.trim() === "") {
+        document.getElementById("name-error").textContent =
+            "Please enter your name.";
+        name.classList.add("input-error");
+        valid = false;
+    }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email.value.trim() === "") {
+        document.getElementById("email-error").textContent =
+            "Please enter your email address.";
+        email.classList.add("input-error");
+        valid = false;
+    } else if (!emailPattern.test(email.value.trim())) {
+        document.getElementById("email-error").textContent =
+            "Please enter a valid email address.";
+        email.classList.add("input-error");
+        valid = false;
+    }
+
+    // Subject validation
+    if (subject.value === "") {
+        document.getElementById("subject-error").textContent =
+            "Please select a subject.";
+        subject.classList.add("input-error");
+        valid = false;
+    }
+
+    // Message validation
+    if (message.value.trim() === "") {
+        document.getElementById("message-error").textContent =
+            "Please enter a message.";
+        message.classList.add("input-error");
+        valid = false;
+    }
+
+    // Send EmailJS if valid
+    if (valid) {
+        emailjs.sendForm(
+            "service_9g9j3xg",
+            "template_utqemmq",
+            form
+        )
+        .then(() => {
+            alert("Thank you! Your message has been sent.");
+            form.reset();
+        })
+        .catch((error) => {
+            alert("Sorry, something went wrong. Please try again.");
+            console.error(error);
+        });
+    }
+});
 </script>
 
 </body>

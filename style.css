@@ -900,3 +900,13 @@ footer a:hover {
 .auth-actions button{ padding:0.5rem 0.8rem; border-radius:8px; border:none; cursor:pointer; }
 
 
+.error {
+    color: #d62828;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.input-error {
+    border: 2px solid #d62828;
+}
