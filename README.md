@@ -1,2 +1,5 @@
 # WEDE5020SibahleGumle
-This is the website for a small business that sells crocheted clothing.
+This is the website for a small business that sells crocheted clothing. 
+it sells quality handmade products that are made by wool. 
+it offers products such as clothes, hats and houshold ccessories. 
+the website was made colourful and pink with oft colours to make it easy on the eye.
