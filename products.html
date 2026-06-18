@@ -97,6 +97,11 @@
                     
                     <hr />
 
+                    <!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-img">
+</div>
                     
             <section id="custom">
                 <h2>Custom Order</h2>
@@ -219,8 +224,28 @@
                 <div id="checkout-result" hidden class="checkout-success">Request has been submitted</div>
             </div>
         </div>
-
+        
         <script src="./javascript/script.js"></script>
+        
+        <script>
+function openLightbox(img) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+}
+
+function closeLightbox(event) {
+    const lightbox = document.getElementById("lightbox");
+
+    // only close if clicking background or X
+    if (!event || event.target === lightbox || event.target.classList.contains("close-btn")) {
+        lightbox.style.display = "none";
+    }
+}
+</script>
+        
     </body>
 
 </html>
