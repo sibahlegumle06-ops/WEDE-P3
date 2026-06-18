@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./CSS/style.css" />
+        <title>Products - Crochet Heaven</title>
+    </head>
+    <body>
+        <header>
+            <h1>Crochet Heaven</h1>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./products.html">Products</a></li>
+                    <li><a href="./FAQ.html">FAQ</a></li>
+                    <li><a href="./contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="products">
+                    <h2>Our Collection</h2>
+                    <p>Handcrafted pieces for every season</p>
+                    <article>
+                        <img src="../assets/images/rufflehat.avif" alt="Ruffle Hat" width="200" />
+                        <h3>Ruffle Hat</h3>
+                        <p><strong>BESTSELLER</strong></p>
+                        <p>lightweight cotton hat with delicate DC stitch detailing. Perfect for cold days</p>
+                        <p><strong>Price: R180</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+                    
+                    <article>
+                        <img src="../assets/images/bikinitwopiece.jpg" alt="Bikini two-piece" width="200"/>
+                        <h3>Bikini two-piece</h3>
+                        <p>soft and comfortable bikini two piece in a colour of your choice. Drapey, timeless</p>
+                        <p><strong>Price: R280</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+
+                    <article>
+                        <img src="../assets/images/fluffybag.webp" alt="Fluffy Bag" width="200"/>
+                        <h3>Fluffy Bag</h3>
+                        <p><strong>NEW</strong></p>
+                        <p>Fluffy small bag, soft to the touch, feels like you're touching a cloud. comes in pink and white</p>
+                        <p><strong>Price: R200</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+
+                    <article>
+                        <img src="../assets/images/bottomcoverup.jpg" alt="bottom cover-up" width="200"/>
+                        <h3>Bottom Cover-Up</h3>
+                        <p>A cute and simple beachy cover up. layer it over your bikini bottoms.</p>
+                        <p><strong>Price: R160</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+                    
+                    <hr />
+            <section id="custom">
+                <h2>Custom Order</h2>
+                <p> Tell us your dream piece - we'll make it a reality.</p>
+                <p><strong>How it works:</strong> Fill in the form below with your vision. We'll get back to you within 2-3 business days with a qoute and timeline. Custom orders typically take 2-[...]
+
+                <form action="#" method="post">
+                    <label for="name">Your Name</label><br />
+                    <input type="text" id="name" name="name" placeholder="e.g. Liyema Sobikwa" required /><br /><br />
+
+                    <label for="email">Email Adress</label><br />
+                    <input type="email" id="email" name="email" placeholder="liyemasobikwa@gmail.com" required /><br /><br />
+
+                    <label for="item-type"> Item Type</label><br />
+                    <select id="item-type" name="item-type">
+                        <option value="">Select type...</option>
+                        <option>Top / Crop Top</option>
+                        <option>Cardigan / Jacket</option>
+                        <option>Skirt</option>
+                        <option>Beach wear</option>
+                        <option>Dress</option>
+                        <option>Bag / Tote</option>
+                        <option>Scarf</option>
+                        <option>Other</option>
+                    </select><br /><br />
+
+                    <label for="size">Clothing Size</label><br />
+                    <select id="size" name="size">
+                        <option value="">Select size...</option>
+                        <option>XS</option>
+                        <option>S</option>
+                        <OPTION>M</OPTION>
+                        <OPTION>L</OPTION>
+                        <OPTION>XL</OPTION>
+                        <OPTION>XXL</OPTION>
+                        <OPTION>Custom measurements</OPTION>
+                    </select><br /><br />
+                    <label for="colour">Preferred Colour(s)</label><br />
+                    <input type="text" id="colour" name="colour" placeholder="e.g. blue, pink"/><br /><br />
+
+                    <label for="budget">Budget Range</label><br />
+                    <select id="budget" name="budget">
+                        <option value="">Select range</option>
+                        <option>R100-R200</option>
+                        <OPTION>R201-R300</OPTION>
+                        <OPTION>R301-400</OPTION>
+                        <OPTION>R401-500</OPTION>
+                        <OPTION>R501-R600</OPTION>
+                        <OPTION>R601+</OPTION>
+                    </select><br /><br />
+
+                    <label for="description">Describe Your Vision</label><br />
+                    <textarea id="description" name="description" rowa="5" cols="40" placeholder="Tell us as much as you like - dtyle, stitches, occasion, inspiration.."></textarea><br /><br />
+
+                    <label for="referral">How did you hear about us?</label><br />
+                    <select id="referral" name="referral">
+                        <option value="">Select...</option>
+                        <option>Instagram</option>
+                        <OPTION>TikTok</OPTION>
+                        <option>Word of mouth</option>
+                        <option>Other</option>
+
+                    </select>
+                    <br /><br />
+                    <button type="submit">Send My Request</button>
+
+                </form>
+            </section>
+
+            <hr />
+        </main>
+
+        <script src="../../javascript/script.js"></script>
+    </body>
+
+</html>

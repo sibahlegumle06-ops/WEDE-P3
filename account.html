@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>My Account - Crochet Heaven</title>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="site-logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img">
+          <circle cx="32" cy="32" r="28" fill="#f9d7e3" stroke="#d97fa5" stroke-width="2" />
+        </svg>
+      </span>
+      <h1>Crochet Heaven <span class="emoji">🧶</span></h1>
+    </div>
+    <nav><a href="./index.html">Home</a></nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>My Orders</h2>
+      <div id="account-area"></div>
+    </section>
+  </main>
+
+  <script>
+    function getUsers(){ const raw = localStorage.getItem('users'); return raw?JSON.parse(raw):[]; }
+    function getCurrent(){ const email = localStorage.getItem('currentUser'); if(!email) return null; return getUsers().find(u=>u.email===email) || null; }
+    function render(){
+      const area = document.getElementById('account-area');
+      const user = getCurrent();
+      if(!user){ area.innerHTML = '<p>You are not signed in. <a href="index.html">Go Home</a> and sign in.</p>'; return; }
+      const btn = document.createElement('button'); btn.textContent='Logout'; btn.style.marginBottom='0.8rem'; btn.addEventListener('click', ()=>{ localStorage.removeItem('currentUser'); location.reload(); });
+      area.innerHTML=''; area.appendChild(btn);
+      if(!user.orders || user.orders.length===0){ area.insertAdjacentHTML('beforeend','<p>You have no orders yet.</p>'); return; }
+      user.orders.forEach(o=>{
+        const el = document.createElement('div'); el.style.border='1px solid #eee'; el.style.padding='0.8rem'; el.style.marginBottom='0.6rem';
+        el.innerHTML = `<strong>Order ${o.id}</strong> — <small>${new Date(o.createdAt).toLocaleString()}</small>
+          <div><strong>Status:</strong> ${o.status || 'Processing'} </div>
+          <div><strong>ETA:</strong> ${o.estimatedDelivery ? new Date(o.estimatedDelivery).toLocaleDateString() : '-'}</div>
+          <div style="margin-top:0.4rem"><strong>Items</strong>:</div>
+          <ul>${o.items.map(i=>'<li>'+i.name+' × '+i.qty+' — R'+(i.price*i.qty)+'</li>').join('')}</ul>
+          <div><strong>Total:</strong> R${o.totals.total}</div>
+        `;
+        area.appendChild(el);
+      });
+    }
+    render();
+  </script>
+</body>
+</html>

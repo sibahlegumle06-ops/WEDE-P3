@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Crochet Heaven</title>
+    
+</head>
+<body>
+   <header>
+    <div> 
+        <h1> Crochet heaven</h1>
+        <p> Handcrafted with love</p>
+    </div>
+    <div>
+        <input type="text" id="searchInput" placeholder="Search products.. "/>
+        <button onclick="doSearch()">Search</button>
+    
+    </div>
+    <div> 
+        <button onclick="openModal()">My Acount</button>
+    </div>
+    <nav>
+        <ul> 
+            <li><a  href="#home"> Home </a></li>
+            <li><a  href="#about"> About Us</a></li>
+            <li><a  href="#products">Products</a></li>
+            <li><a  href="#custom">Custom Order</a></li>
+            <li><a  href="#faq">FAQ</a></li>
+            <li><a  href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+   </header>
+   <main>
+
+    <section id="home">
+        <h2> Welcome to Crochet Heaven</h2>
+        <p>Each piece is lovingly handcrafted to bring warmth, style, and a little magic into your wardrobe. Unique. Sustainable. Made just for your</p>
+        <a  href="#products"><button>Shop Collection</button></a>
+        <a  href="custom"><button>Place a custom order</button></a>
+        <h3>Why Choose Us</h3>
+        <ul>
+            <li><strong>Handmade</strong> - Every stitch crafted by hand with premium yarn and care.</li>
+            <li><strong>Sustainable</strong> - We use eco friendly, natural fibres wherever.</li>   
+            <li><strong>Custom Designs</strong> - Can't find what you need? We'll make it just for you.</li> 
+            <li><strong>Made with Love</strong> - Every order ships with a handwritten thank you note.</li>
+        </ul>
+    </section>
+
+    <hr />
+
+    <section id="about">
+        <h2>About Us</h2>
+        <h3>Crafted from the Heart</h3>
+        <p>Crochet Heaven was born in 2024 from a simple passion - the meditative joy of turning yarn into something beautiful and wearable. What started as a hobby quickly grew into a small busin[...]
+        <p>Every item in our shop is handmade by our small team of artisan crocheters. We believe clothing can be both sustainable and stunning, and that the best garments are the ones made with r[...]
+        <p>We source our yarns carefully, favouring natuaral fibres like merino wool, cotton, and alpaca. Our packaging is plastic free, and every purchase helps support independent craft.</p>
+        <ul>
+            <li>Est. 2024</li>
+            <li>100% Handmade</li>
+            <li>Eco-friendly Yarn</li>
+            <li>Custom Orders Welcome</li>
+            <li>Small Business</li>
+        </ul>
+    </section>
+
+    <hr    />
+
+    <section id="products">
+        <h2>Our Collection</h2>
+        <p>Handcrafted pieces for every season</p>
+        <article>
+            <img src="rufflehat.avif" alt="Ruffle Hat" width="200" />
+            <h3>Ruffle Hat</h3>
+            <p><strong>BESTSELLER</strong></p>
+            <p>lightweight cotton hat with delicate DC stitch detailing. Perfect for cold days</p>
+            <p><strong>Price: R180</strong></p>
+            <button>Add to Cart</button>
+        </article>
+        
+        <article>
+            <img src="bikinitwopiece.jpg" alt="Bikini two-piece" width="200"/>
+            <h3>Bikini two-piece</h3>
+            <p>soft and comfortable bikini two piece in a colour of your choice. Drapey, timeless</p>
+            <p><strong>Price: R280</strong></p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article>
+            <img src="fluffybag.webp" alt="Fluffy Bag" width="200"/>
+            <h3>Fluffy Bag</h3>
+            <p><strong>NEW</strong></p>
+            <p>Fluffy small bag, soft to the touch, feels like you're touching a cloud. comes in pink and white</p>
+            <p><strong>Price: R200</strong></p>
+            <button>Add to Cart</button>
+        </article>
+
+        <article>
+            <img src="bottomcoverup.jpg" alt="bottom cover-up" width="200"/>
+            <h3>Bottom Cover-Up</h3>
+            <p>A cute and simple beachy cover up. layer it over your bikini bottoms.</p>
+            <p><strong>Price: R160</strong></p>
+            <button>Add to Cart</button>
+        </article>
+        
+        <hr />
+<section id="custom">
+    <h2>Custom Order</h2>
+    <p> Tell us your dream piece - we'll make it a reality.</p>
+    <p><strong>How it works:</strong> Fill in the form below with your vision. We'll get back to you within 2-3 business days with a qoute and timeline. Custom orders typically take 2-4 weeks to [...]
+
+    <form action="#" method="post">
+        <label for="name">Your Name</label><br />
+        <input type="text" id="name" name="name" placeholder="e.g. Liyema Sobikwa" required /><br /><br />
+
+        <label for="email">Email Adress</label><br />
+        <input type="email" id="email" name="email" placeholder="liyemasobikwa@gmail.com" required /><br /><br />
+
+        <label for="item-type"> Item Type</label><br />
+        <select id="item-type" name="item-type">
+            <option value="">Select type...</option>
+            <option>Top / Crop Top</option>
+            <option>Cardigan / Jacket</option>
+            <option>Skirt</option>
+            <option>Beach wear</option>
+            <option>Dress</option>
+            <option>Bag / Tote</option>
+            <option>Scarf</option>
+            <option>Other</option>
+        </select><br /><br />
+
+         <label for="size">Clothing Size</label><br />
+         <select id="size" name="size">
+            <option value="">Select size...</option>
+            <option>XS</option>
+            <option>S</option>
+            <OPTION>M</OPTION>
+            <OPTION>L</OPTION>
+            <OPTION>XL</OPTION>
+            <OPTION>XXL</OPTION>
+            <OPTION>Custom measurements</OPTION>
+         </select><br /><br />
+         <label for="colour">Preferred Colour(s)</label><br />
+         <input type="text" id="colour" name="colour" placeholder="e.g. blue, pink"/><br /><br />
+
+         <label for="budget">Budget Range</label><br />
+         <select id="budget" name="budget">
+            <option value="">Select range</option>
+            <option>R100-R200</option>
+            <OPTION>R201-R300</OPTION>
+            <OPTION>R301-400</OPTION>
+            <OPTION>R401-500</OPTION>
+            <OPTION>R501-R600</OPTION>
+            <OPTION>R601+</OPTION>
+         </select><br /><br />
+
+         <label for="description">Describe Your Vision</label><br />
+         <textarea id="description" name="description" rowa="5" cols="40" placeholder="Tell us as much as you like - dtyle, stitches, occasion, inspiration.."></textarea><br /><br />
+
+        <label for="referral">How did you hear about us?</label><br />
+        <select id="referral" name="referral">
+            <option value="">Select...</option>
+            <option>Instagram</option>
+            <OPTION>TikTok</OPTION>
+            <option>Word of mouth</option>
+            <option>Other</option>
+
+        </select>
+         <button type="submit">Send My Request</button>
+
+    </form>
+</section>
+
+<hr />
+
+
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How long does a custom order take?</h3>
+    <p>Custom orders typically take 2-4 weeks from approval, depending on complexity and current workload. Rush orders may be available - just let us know your deadline!</p>
+
+    <h3>What yarn do you use?</h3>
+    <p>We primarily use high-quality natural fibres including organic cotton, merino wool and alpaca blends sourced from ethical suppliers. Mention any yarn preference or allergies in your custom[...]
+
+    <h3>Do you ship internationally?</h3>
+    <p>Yes! We ship worldwide. Domestic shipping takes 3-5 business days; international orders typically arrive within 7-14 business days. All internationsl orders include full tracking.</p>
+
+    <h3>How do I care for my crochet pieces</h3>
+    <p>Hamd-wash in cool water with a gentle detergent and lay flat to dry away from direct sunlight. Never tumble dry or wring out crochet items. Detailed care instructions are included with eve[...]
+    <h3>Can I return or exchange an item?</h3>
+    <p>We accept returns on ready-made items within 14 days of delivery, provided items are unworn and in original condition. Custom orders are non-redundable as they are made specifically for yo[...]
+</section>
+<hr />
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>We'd love to hear from you - get in touch any time.</p>
+
+<h3>Get in touch</h3>
+<ul>
+    <li><strong>Email (General):</strong> <a href="mailto:madefromwool@crochetheaven.com">madefromwool@crochetheaven.com</a></li>
+    <li><strong>Email (Order Suppoty):</strong> <a href=mailto:orders@crochetheaven.com">orders@crochetheaven.com</a></li>
+    <li><strong>Instagram:</strong> @crochetheaven_23</li>
+    <li><strong>TikTok:</strong> @crochet_heaven_23</li>
+</ul>
+<h3>Response Hours</h3>
+<ul>
+    <li>Monday-Friday: 9am-6pm</li>
+    <li>Saturday: 10am-4pm</li>
+    <li>Sunday: Closed</li>
+    <li>We aim to reply within 24 hours.</li>
+</ul>
+
+<h3>Send a Message</h3>
+<form action="#" method="post">
+
+    <label for="contact-name">Your Name</label></br />
+    <input type="text" id="contact-name" name="name" placeholder="e.g Liyema Sobikwa" required /><br /><br />
+
+    <label for="contact-email">Email Address</label><br />
+    <input type="email" id="contact-email" name="email" placeholder="liyemasobikwa@gmail.com" required /><br /><br />
+
+    <label for="contact-subject">Subject</label>
+    <select id="contact-subject" name="subject">
+        <option value="">Select a topic...</option>
+        <option>General Enquiry</option>
+        <option>Order Update</option>
+        <option>Custom Order Question</option>
+        <option>Returns &amp; Exchanges</option>
+        <option>Wholesale / Collaboration</option>
+        <option>Other</option>
+    </select><br /><br />
+
+    <label for="contact-message">Your Message</label><br />
+    <textarea id="contact-message" name="Message" rows="5" cols="40" placeholder="How can we help you today"></textarea><br /><br />
+
+    <button type="submit">Send Message</button>
+</form>
+</section>
+
+   </main>
+
+   <footer>
+    <p><strong>Crochet Heaven</strong> - Handcrafted with love</p> 
+    <p>Email: madebywool@crochetheaven.com</p>
+    <p>Instagram: @crochetheaven</p>
+    <p>&copy; 2026 crochet Heaven. All rights reserved.</p>
+   </footer>
+
+   <script src="../../javascript/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Orders - Crochet Heaven (Owner)</title>
+</head>
+<body>
+  <header>
+    <h1>Crochet Heaven — Orders</h1>
+    <nav><a href="./index.html">Home</a></nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Received Orders</h2>
+      <p>Orders are stored locally (for demo). When EmailJS is configured, emails will also be sent.</p>
+      <div id="orders-container"></div>
+      <div style="margin-top:1rem; display:flex; gap:0.6rem;">
+        <button id="clear-orders">Clear All Orders</button>
+        <button id="download-orders">Download JSON</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function loadOrders(){
+      const raw = localStorage.getItem('orders');
+      return raw ? JSON.parse(raw) : [];
+    }
+    function render(){
+      const cont = document.getElementById('orders-container');
+      const orders = loadOrders();
+      if(!cont) return;
+      cont.innerHTML = '';
+      if(orders.length===0){ cont.innerHTML = '<p>No orders yet.</p>'; return; }
+      orders.forEach(o => {
+        const el = document.createElement('div');
+        el.style.border = '1px solid #eee';
+        el.style.padding = '0.8rem';
+        el.style.marginBottom = '0.8rem';
+        el.innerHTML = `<strong>Order ${o.id}</strong> — <small>${new Date(o.createdAt).toLocaleString()}</small>
+          <div style="margin-top:0.4rem"><strong>Customer</strong>: ${o.customer.name} — ${o.customer.email} — ${o.customer.phone || '-'}
+          <div><strong>Address</strong>: ${o.customer.address}</div>
+          <div><strong>Status:</strong> ${o.status || 'Processing'} &nbsp; <strong>ETA:</strong> ${o.estimatedDelivery ? new Date(o.estimatedDelivery).toLocaleDateString() : '-'}</div>
+          <div style="margin-top:0.4rem"><strong>Items</strong>:</div>
+          <ul>${o.items.map(i=>'<li>'+i.name+' × '+i.qty+' — R'+(i.price*i.qty)+'</li>').join('')}</ul>
+          <div><strong>Subtotal:</strong> R${o.totals.subtotal} &nbsp; <strong>Delivery:</strong> R${o.totals.delivery} &nbsp; <strong>Total:</strong> R${o.totals.total}</div>
+          <div style="margin-top:0.4rem"><strong>Notes:</strong> ${o.notes || '-'}</div>
+        `;
+        // action buttons for owner to update status
+        const actions = document.createElement('div');
+        actions.style.marginTop = '0.6rem';
+        const btnShipped = document.createElement('button'); btnShipped.textContent='Mark Shipped';
+        const btnOut = document.createElement('button'); btnOut.textContent='Out for delivery';
+        const btnDelivered = document.createElement('button'); btnDelivered.textContent='Mark Delivered';
+        [btnShipped, btnOut, btnDelivered].forEach(b=>{ b.style.marginRight='0.5rem'; b.style.cursor='pointer'; });
+        btnShipped.addEventListener('click', ()=>{ updateOrderStatus(o.id,'Shipped'); });
+        btnOut.addEventListener('click', ()=>{ updateOrderStatus(o.id,'Out for delivery'); });
+        btnDelivered.addEventListener('click', ()=>{ updateOrderStatus(o.id,'Delivered'); });
+        actions.appendChild(btnShipped); actions.appendChild(btnOut); actions.appendChild(btnDelivered);
+        el.appendChild(actions);
+        cont.appendChild(el);
+      });
+    }
+    function getUsers(){ const raw = localStorage.getItem('users'); return raw?JSON.parse(raw):[]; }
+    function saveUsers(u){ localStorage.setItem('users', JSON.stringify(u)); }
+    function updateOrderStatus(id, status){
+      const orders = loadOrders();
+      const idx = orders.findIndex(o=>o.id===id);
+      if(idx===-1) return alert('Order not found');
+      orders[idx].status = status;
+      // save
+      localStorage.setItem('orders', JSON.stringify(orders));
+      // propagate to user account if exists
+      const users = getUsers();
+      const userIdx = users.findIndex(u=>u.email === orders[idx].customer.email);
+      if(userIdx>=0){
+        users[userIdx].orders = users[userIdx].orders || [];
+        // find user's order by id and update, or insert if missing
+        const oidx = users[userIdx].orders.findIndex(x=>x.id===id);
+        if(oidx>=0) users[userIdx].orders[oidx].status = status;
+        else users[userIdx].orders.unshift(orders[idx]);
+        saveUsers(users);
+      }
+      render();
+    }
+    document.getElementById('clear-orders').addEventListener('click', ()=>{
+      if(!confirm('Clear all saved orders?')) return;
+      localStorage.removeItem('orders'); render();
+    });
+    document.getElementById('download-orders').addEventListener('click', ()=>{
+      const data = loadOrders();
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='orders.json'; a.click(); URL.revokeObjectURL(url);
+    });
+    render();
+  </script>
+</body>
+</html>

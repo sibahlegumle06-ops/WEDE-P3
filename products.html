@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <title>Products - Crochet Heaven</title>
+    </head>
+    <body>
+        <header>
+            <div class="brand">
+                <span class="site-logo" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img">
+                        <circle cx="32" cy="32" r="28" fill="#f9d7e3" stroke="#d97fa5" stroke-width="2" />
+                        <path d="M12 36c10-8 28-8 36-2" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                        <path d="M14 28c8 2 18-4 30-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <h1>Crochet Heaven <span class="emoji" aria-hidden="true">🧶</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./products.html">Products</a></li>
+                    <li><a href="./FAQ.html">FAQ</a></li>
+                    <li><a href="./contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div id="account-controls"></div>
+        </header>
+
+        <!-- Cart panel -->
+        <div id="cart-panel" aria-live="polite">
+            <div id="cart-summary">
+                <button id="cart-toggle">Cart (<span id="cart-count">0</span>)</button>
+                <div id="cart-amounts">
+                    <div>Subtotal: <span id="cart-subtotal">R0</span></div>
+                    <div>Delivery: <span id="cart-delivery">R0</span></div>
+                    <div><strong>Total: <span id="cart-total">R0</span></strong></div>
+                </div>
+            </div>
+            <div id="cart-details" hidden>
+                <ul id="cart-items-list"></ul>
+                <div id="cart-actions">
+                    <button id="cart-clear">Clear Cart</button>
+                    <button id="cart-checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section id="products">
+                    <h2>Our Collection</h2>
+                    <p>Handcrafted pieces for every season</p>
+                    <div style="margin-bottom:1rem;">
+                        <a class="btn-shop" href="#products">🛍️ Browse Collection</a>
+                        <a class="btn-custom" href="#custom">✉️ Place Custom Order</a>
+                    </div>
+                    <article data-price="180">
+                        <img src="./WEDE5020SibahleGumle/assets/images/rufflehat.avif" alt="Ruffle Hat" width="200" />
+                        <h3>Ruffle Hat</h3>
+                        <p><strong>BESTSELLER</strong></p>
+                        <p>lightweight cotton hat with delicate DC stitch detailing. Perfect for cold days</p>
+                        <p><strong>Price: R180</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+                    
+                    <article data-price="280">
+                        <img src="./WEDE5020SibahleGumle/assets/images/bikinitwopiece.jpg" alt="Bikini two-piece" width="200"/>
+                        <h3>Bikini two-piece</h3>
+                        <p>soft and comfortable bikini two piece in a colour of your choice. Drapey, timeless</p>
+                        <p><strong>Price: R280</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+
+                    <article data-price="200">
+                        <img src="./WEDE5020SibahleGumle/assets/images/fluffybag.webp" alt="Fluffy Bag" width="200"/>
+                        <h3>Fluffy Bag</h3>
+                        <p><strong>NEW</strong></p>
+                        <p>Fluffy small bag, soft to the touch, feels like you're touching a cloud. comes in pink and white</p>
+                        <p><strong>Price: R200</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+
+                    <article data-price="160">
+                        <img src="./WEDE5020SibahleGumle/assets/images/bottomcoverup.jpg" alt="bottom cover-up" width="200"/>
+                        <h3>Bottom Cover-Up</h3>
+                        <p>A cute and simple beachy cover up. layer it over your bikini bottoms.</p>
+                        <p><strong>Price: R160</strong></p>
+                        <button>Add to Cart</button>
+                    </article>
+                    
+                    <hr />
+            <section id="custom">
+                <h2>Custom Order</h2>
+                <p> Tell us your dream piece - we'll make it a reality.</p>
+                <p><strong>How it works:</strong> Fill in the form below with your vision. We'll get back to you within 2-3 business days with a qoute and timeline. Custom orders typically take 2-4 weeks to complete.</p>
+
+                <form action="#" method="post">
+                    <label for="name">Your Name</label><br />
+                    <input type="text" id="name" name="name" placeholder="e.g. Liyema Sobikwa" required /><br /><br />
+
+                    <label for="email">Email Adress</label><br />
+                    <input type="email" id="email" name="email" placeholder="liyemasobikwa@gmail.com" required /><br /><br />
+
+                    <label for="item-type"> Item Type</label><br />
+                    <select id="item-type" name="item-type">
+                        <option value="">Select type...</option>
+                        <option>Top / Crop Top</option>
+                        <option>Cardigan / Jacket</option>
+                        <option>Skirt</option>
+                        <option>Beach wear</option>
+                        <option>Dress</option>
+                        <option>Bag / Tote</option>
+                        <option>Scarf</option>
+                        <option>Other</option>
+                    </select><br /><br />
+
+                    <label for="size">Clothing Size</label><br />
+                    <select id="size" name="size">
+                        <option value="">Select size...</option>
+                        <option>XS</option>
+                        <option>S</option>
+                        <OPTION>M</OPTION>
+                        <OPTION>L</OPTION>
+                        <OPTION>XL</OPTION>
+                        <OPTION>XXL</OPTION>
+                        <OPTION>Custom measurements</OPTION>
+                    </select><br /><br />
+                    <label for="colour">Preferred Colour(s)</label><br />
+                    <input type="text" id="colour" name="colour" placeholder="e.g. blue, pink"/><br /><br />
+
+                    <label for="budget">Budget Range</label><br />
+                    <select id="budget" name="budget">
+                        <option value="">Select range</option>
+                        <option>R100-R200</option>
+                        <OPTION>R201-R300</OPTION>
+                        <OPTION>R301-400</OPTION>
+                        <OPTION>R401-500</OPTION>
+                        <OPTION>R501-R600</OPTION>
+                        <OPTION>R601+</OPTION>
+                    </select><br /><br />
+
+                    <label for="description">Describe Your Vision</label><br />
+                    <textarea id="description" name="description" rowa="5" cols="40" placeholder="Tell us as much as you like - dtyle, stitches, occasion, inspiration.."></textarea><br /><br />
+
+                    <label for="referral">How did you hear about us?</label><br />
+                    <select id="referral" name="referral">
+                        <option value="">Select...</option>
+                        <option>Instagram</option>
+                        <OPTION>TikTok</OPTION>
+                        <option>Word of mouth</option>
+                        <option>Other</option>
+
+                    </select>
+                    <br /><br />
+                    <button type="submit">Send My Request</button>
+
+                </form>
+            </section>
+
+            <hr />
+        </main>
+
+        <!-- Checkout modal (hidden by default) -->
+        <div id="checkout-modal" class="modal-overlay" hidden>
+            <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+                <h3 id="checkout-title">Checkout — Enter your details</h3>
+                <form id="checkout-form">
+                    <div class="checkout-grid">
+                        <div class="checkout-column">
+                            <label for="cust-name">Full name</label>
+                            <input id="cust-name" name="name" type="text" required />
+
+                            <label for="cust-email">Email</label>
+                            <input id="cust-email" name="email" type="email" required />
+
+                            <label for="cust-address">Delivery address</label>
+                            <textarea id="cust-address" name="address" rows="3" required></textarea>
+
+                            <label for="cust-phone">Phone</label>
+                            <input id="cust-phone" name="phone" type="tel" />
+                        </div>
+
+                        <div class="checkout-column">
+                            <label for="pay-card">Card Number</label>
+                            <input id="pay-card" name="card" type="text" placeholder="4242 4242 4242 4242" required />
+
+                            <div style="display:flex; gap:0.5rem;">
+                                <div style="flex:1">
+                                    <label for="pay-exp">Expiry</label>
+                                    <input id="pay-exp" name="exp" type="text" placeholder="MM/YY" required />
+                                </div>
+                                <div style="width:120px;">
+                                    <label for="pay-cvc">CVC</label>
+                                    <input id="pay-cvc" name="cvc" type="text" placeholder="123" required />
+                                </div>
+                            </div>
+
+                            <label for="order-notes">Order notes (optional)</label>
+                            <textarea id="order-notes" name="notes" rows="5"></textarea>
+
+                            <div style="margin-top:0.6rem; font-size:0.95rem;">Payment is simulated on this demo — we'll integrate EmailJS to send the order to the owner.</div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-actions">
+                        <button type="button" id="checkout-cancel">Cancel</button>
+                        <button type="submit" id="checkout-submit">Submit Order</button>
+                    </div>
+                </form>
+                <div id="checkout-result" hidden class="checkout-success">Request has been submitted</div>
+            </div>
+        </div>
+
+        <script src="./javascript/script.js"></script>
+    </body>
+
+</html>
