@@ -122,31 +122,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-<script>
-emailjs.init({
-    publicKey: "ObPiJedFA7wS59zRC",
-});
 
-document
-    .getElementById("contact-form")
-    .addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        emailjs.sendForm(
-            "service_9g9j3xg",
-            "template_utqemmq",
-            this
-        )
-        .then(() => {
-            alert("Message sent successfully!");
-            this.reset();
-        })
-        .catch((error) => {
-            console.error("FAILED...", error);
-            alert("Failed to send message. Please try again.");
-        });
-    });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
