@@ -5,3 +5,5 @@ it offers products such as clothes, hats and houshold ccessories.
 the website was made colourful and pink with oft colours to make it easy on the eye.
 users can track orders and create accounts on the website. 
 there is an option to order a personalised outfit instead of the options given. 
+the businesses name is crochet heaven
+the website was made by sibahle gumle
