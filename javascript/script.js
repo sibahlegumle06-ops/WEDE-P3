@@ -495,71 +495,84 @@ document.addEventListener("DOMContentLoaded", () => {
     // CONTACT FORM VALIDATION
     // ===================================
 
-    const contactForm = document.querySelector("#contact form");
+   form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    if (contactForm) {
+    let valid = true;
 
-        contactForm.addEventListener("submit", function(event) {
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(error => {
+        error.textContent = "";
+    });
 
-            const name =
-                document.getElementById("contact-name").value.trim();
+    document.querySelectorAll("input, select, textarea").forEach(field => {
+        field.classList.remove("input-error");
+    });
 
-            const email =
-                document.getElementById("contact-email").value.trim();
+    const name = document.getElementById("contact-name");
+    const email = document.getElementById("contact-email");
+    const subject = document.getElementById("contact-subject");
+    const message = document.getElementById("contact-message");
 
-            const subject =
-                document.getElementById("contact-subject").value;
+    // Trim values
+    const nameValue = name.value.trim();
+    const emailValue = email.value.trim();
+    const messageValue = message.value.trim();
 
-            const message =
-                document.getElementById("contact-message").value.trim();
-
-            let errors = [];
-
-            if (name === "") {
-                errors.push("Name cannot be empty");
-            }
-
-            if (email === "") {
-                errors.push("Email cannot be empty");
-            }
-
-            if (!email.includes("@")) {
-                errors.push("Enter a valid email address");
-            }
-
-            if (subject === "") {
-                errors.push("Select a subject");
-            }
-
-            if (message === "") {
-                errors.push("Message cannot be empty");
-            }
-
-            // prevent actual submit in demo and show inline result
-            event.preventDefault();
-
-            // ensure result container exists
-            let resultEl = document.getElementById('contact-result');
-            if (!resultEl) {
-                resultEl = document.createElement('div');
-                resultEl.id = 'contact-result';
-                resultEl.style.marginTop = '0.6rem';
-                resultEl.style.fontWeight = '700';
-                contactForm.parentNode.insertBefore(resultEl, contactForm.nextSibling);
-            }
-
-            if (errors.length > 0) {
-                resultEl.textContent = errors.join(' — ');
-                resultEl.style.color = 'crimson';
-            } else {
-                resultEl.textContent = 'Message sent';
-                resultEl.style.color = 'green';
-                contactForm.reset();
-            }
-
-        });
-
+    // Name validation
+    if (nameValue.length < 2) {
+        document.getElementById("name-error").textContent =
+            "Please enter your full name.";
+        name.classList.add("input-error");
+        valid = false;
     }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailValue)) {
+        document.getElementById("email-error").textContent =
+            "Please enter a valid email address.";
+        email.classList.add("input-error");
+        valid = false;
+    }
+
+    // Subject validation
+    if (subject.value === "") {
+        document.getElementById("subject-error").textContent =
+            "Please select a subject.";
+        subject.classList.add("input-error");
+        valid = false;
+    }
+
+    // Message validation
+    if (messageValue.length < 10) {
+        document.getElementById("message-error").textContent =
+            "Message must be at least 10 characters.";
+        message.classList.add("input-error");
+        valid = false;
+    }
+
+    // STOP HERE if validation failed
+    if (!valid) {
+        return;
+    }
+
+    // Send EmailJS only after validation passes
+    emailjs.sendForm(
+        "service_9g9j3xg",
+        "template_utqemmq",
+        form
+    )
+    .then(() => {
+        showToast("Message sent successfully!");
+        form.reset();
+    })
+    .catch((error) => {
+        showToast("Failed to send message.");
+        console.error(error);
+    });
+});
 
 
     // ===================================
