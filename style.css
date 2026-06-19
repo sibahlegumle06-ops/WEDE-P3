@@ -935,7 +935,7 @@ footer a:hover {
     opacity: 1;
     bottom: 50px;
 } 
-
+/* lightbox styles */
 .lightbox {
     display: none;
     position: fixed;
@@ -963,4 +963,28 @@ footer a:hover {
     color: white;
     cursor: pointer;
     font-weight: bold;
+}
+/* Brand / Logo */
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.logo {
+    width: 90px;
+    height: auto;
+}
+
+.brand-text h1 {
+    margin: 0;
+}
+
+.brand-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
 }
